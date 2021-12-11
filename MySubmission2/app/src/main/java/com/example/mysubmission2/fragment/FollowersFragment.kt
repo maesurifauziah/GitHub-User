@@ -43,7 +43,7 @@ class FollowersFragment : Fragment() {
         progressBarFollowers.visibility = View.VISIBLE
         val client = AsyncHttpClient()
         client.addHeader("User-Agent", "request")
-        client.addHeader("Authorization", "token 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")
+        client.addHeader("Authorization", "token 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")
         val url = "https://api.github.com/users/$id/followers"
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {
@@ -82,7 +82,7 @@ class FollowersFragment : Fragment() {
         progressBarFollowers.visibility = View.VISIBLE
         val client = AsyncHttpClient()
         client.addHeader("User-Agent", "request")
-        client.addHeader("Authorization", "token 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")
+        client.addHeader("Authorization", "token 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")
         val url = "https://api.github.com/users/$id"
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {

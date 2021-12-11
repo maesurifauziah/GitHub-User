@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MySubmission2</string>
+    <string name="app_name">MySubmission3</string>
     <string name="username">Nama Pengguna</string>
     <string name="name">Nama</string>
     <string name="location">Lokasi : %s </string>

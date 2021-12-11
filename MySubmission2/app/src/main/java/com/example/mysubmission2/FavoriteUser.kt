@@ -8,7 +8,6 @@ class FavoriteUser : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favorite_user)
 //        supportActionBar?.title = "Favorite"
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         title = getString(R.string.favorite)
     }
 }
