@@ -4,6 +4,14 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <permission
+        android:name="com.example.mysubmission2.READ_DATABASE"
+        android:protectionLevel="normal" />
+
+    <permission
+        android:name="com.example.mysubmission2.WRITE_DATABASE"
+        android:protectionLevel="normal" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -27,6 +35,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".DetailUser" />
+        <provider
+            android:name=".provider.FavoriteProvider"
+            android:authorities="com.example.mysubmission2"
+            android:enabled="true"
+            android:exported="true"
+            android:readPermission="com.example.mysubmission2.READ_DATABASE"
+            android:writePermission="com.example.mysubmission2.WRITE_DATABASE" />
     </application>
 
 </manifest>
