@@ -9,7 +9,7 @@ internal class DatabaseHelper(context: Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     companion object {
-        private const val DATABASE_NAME = "userDB"
+        private const val DATABASE_NAME = "fav_user_db"
         private const val DATABASE_VERSION = 1
         private const val SQL_CREATE_TABLE_NOTE = "CREATE TABLE $TABLE_NAME" +
                 " (${DatabaseContract.FavColumns.USERNAME} TEXT PRIMARY KEY  NOT NULL," +

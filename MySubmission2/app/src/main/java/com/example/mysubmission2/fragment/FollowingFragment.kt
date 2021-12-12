@@ -8,9 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.mysubmission2.DetailUser
 import com.example.mysubmission2.R
 import com.example.mysubmission2.adapter.FollowingAdapter
 import com.example.mysubmission2.data.DataUser
+import com.example.mysubmission2.data.Favorite
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
@@ -22,10 +24,14 @@ class FollowingFragment : Fragment() {
     companion object {
         private val TAG = FollowingFragment::class.java.simpleName
         const val EXTRA_DATA = "extra_data"
+        const val EXTRA_NOTE = "extra_note"
     }
 
     private var listUser: ArrayList<DataUser> = ArrayList()
     private lateinit var adapter: FollowingAdapter
+    private var favorites: Favorite? = null
+    private lateinit var dataFavorite: Favorite
+    private lateinit var dataUser: DataUser
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_following, container, false)
@@ -35,15 +41,21 @@ class FollowingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         adapter = FollowingAdapter(listUser)
         listUser.clear()
-        val dataUser = activity?.intent?.getParcelableExtra<DataUser>(EXTRA_DATA) as DataUser
-        getUserFollowing(dataUser.username.toString())
+        favorites = activity?.intent?.getParcelableExtra(DetailUser.EXTRA_NOTE)
+        if (favorites != null) {
+            dataFavorite = activity?.intent?.getParcelableExtra<Favorite>(FollowersFragment.EXTRA_NOTE) as Favorite
+            getUserFollowing(dataFavorite.username.toString())
+        } else {
+            dataUser = activity?.intent?.getParcelableExtra<DataUser>(FollowersFragment.EXTRA_DATA) as DataUser
+            getUserFollowing(dataUser.username.toString())
+        }
     }
 
     private fun getUserFollowing(id: String) {
         progressBarFollowing.visibility = View.VISIBLE
         val client = AsyncHttpClient()
         client.addHeader("User-Agent", "request")
-        client.addHeader("Authorization", "token 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")
+        client.addHeader("Authorization", "token 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")
         val url = "https://api.github.com/users/$id/following"
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {
@@ -82,7 +94,7 @@ class FollowingFragment : Fragment() {
         progressBarFollowing.visibility = View.VISIBLE
         val client = AsyncHttpClient()
         client.addHeader("User-Agent", "request")
-        client.addHeader("Authorization", "token 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")
+        client.addHeader("Authorization", "token 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")
         val url = "https://api.github.com/users/$id"
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {
