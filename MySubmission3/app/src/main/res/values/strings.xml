@@ -11,5 +11,9 @@
     <string name="change_language_settings">Change Language Settings</string>
     <string name="change_theme_settings">Themes Settings</string>
     <string name="dark_mode">Mode Malam</string>
+    <string name="favorite">Favorite</string>
+    <string name="delete_favorite">Delete Favorite</string>
+    <string name="add_favorite">Add Favorite</string>
+    <string name="empty_favorite">Empty Favorite</string>
 
 </resources>

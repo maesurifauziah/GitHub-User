@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         binding.progressBar.visibility = View.VISIBLE
         val client = AsyncHttpClient()
         client.addHeader("User-Agent", "request")
-        client.addHeader("Authorization", "token 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")
+        client.addHeader("Authorization", "token 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")
         val url = "https://api.github.com/users"
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {
@@ -107,7 +107,7 @@ class MainActivity : AppCompatActivity() {
         binding.progressBar.visibility = View.VISIBLE
         val client = AsyncHttpClient()
         client.addHeader("User-Agent", "request")
-        client.addHeader("Authorization", "token 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")
+        client.addHeader("Authorization", "token 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")
         val url = "https://api.github.com/search/users?q=$id"
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {
@@ -147,7 +147,7 @@ class MainActivity : AppCompatActivity() {
         binding.progressBar.visibility = View.VISIBLE
         val client = AsyncHttpClient()
         client.addHeader("User-Agent", "request")
-        client.addHeader("Authorization", "token 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")
+        client.addHeader("Authorization", "token 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")
         val url = "https://api.github.com/users/$id"
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {
@@ -256,6 +256,10 @@ class MainActivity : AppCompatActivity() {
         }
         if (item.itemId == R.id.change_theme_settings) {
             val mIntent = Intent(this, SettingsTheme::class.java)
+            startActivity(mIntent)
+        }
+        if (item.itemId == R.id.action_favorite) {
+            val mIntent = Intent(this, FavoriteUser::class.java)
             startActivity(mIntent)
         }
         return super.onOptionsItemSelected(item)

@@ -12,4 +12,8 @@
     <string name="change_language_settings">Ubah Pengaturan Bahasa</string>
     <string name="change_theme_settings">Pengaturan Tema</string>
     <string name="dark_mode">Dark Mode</string>
+    <string name="favorite">Favorite</string>
+    <string name="delete_favorite">Hapus Favorite</string>
+    <string name="add_favorite">Tambah Favorite</string>
+    <string name="empty_favorite">Favorite Kosong</string>
 </resources>
