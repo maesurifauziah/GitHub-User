@@ -37,7 +37,7 @@ class DetailUser : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: DetailUserBinding
 
     private var isFavorite = false
-    private lateinit var gitHelper: FavoriteHelper
+    private lateinit var favHelper: FavoriteHelper
     private var favorites: Favorite? = null
     private lateinit var imageAvatar: String
 
@@ -45,24 +45,22 @@ class DetailUser : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = DetailUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        setData()
 
-//        viewPagerConfig()
-        gitHelper = FavoriteHelper.getInstance(applicationContext)
-        gitHelper.open()
+        favHelper = FavoriteHelper.getInstance(applicationContext)
+        favHelper.open()
 
         favorites = intent.getParcelableExtra(EXTRA_NOTE)
         if (favorites != null) {
             setDataObject()
             isFavorite = true
             val checked: Int = R.drawable.ic_favorite
-            tv_onsFavorDetail.setImageResource(checked)
+            fa_btn_favorite.setImageResource(checked)
         } else {
             setData()
         }
 
         viewPagerConfig()
-        tv_onsFavorDetail.setOnClickListener(this)
+        fa_btn_favorite.setOnClickListener(this)
     }
 
     private fun viewPagerConfig() {
@@ -114,11 +112,11 @@ class DetailUser : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View) {
         val checked: Int = R.drawable.ic_favorite
         val unChecked: Int = R.drawable.ic_favorite_border
-        if (view.id == R.id.tv_onsFavorDetail) {
+        if (view.id == R.id.fa_btn_favorite) {
             if (isFavorite) {
-                gitHelper.deleteById(favorites?.username.toString())
+                favHelper.deleteById(favorites?.username.toString())
                 Toast.makeText(this, getString(R.string.delete_favorite), Toast.LENGTH_SHORT).show()
-                tv_onsFavorDetail.setImageResource(unChecked)
+                fa_btn_favorite.setImageResource(unChecked)
                 isFavorite = false
             } else {
                 val dataUsername = detail_username.text.toString()
@@ -141,14 +139,14 @@ class DetailUser : AppCompatActivity(), View.OnClickListener {
                 isFavorite = true
                 contentResolver.insert(CONTENT_URI, values)
                 Toast.makeText(this, getString(R.string.add_favorite), Toast.LENGTH_SHORT).show()
-                tv_onsFavorDetail.setImageResource(checked)
+                fa_btn_favorite.setImageResource(checked)
             }
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        gitHelper.close()
+        favHelper.close()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

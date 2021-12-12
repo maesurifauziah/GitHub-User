@@ -42,8 +42,6 @@ class FollowersFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         adapter = FollowersAdapter(listUser)
         listUser.clear()
-//        val dataUser = activity?.intent?.getParcelableExtra<DataUser>(EXTRA_DATA) as DataUser
-//        getUserFollowers(dataUser.username.toString())
         favorites = activity?.intent?.getParcelableExtra(DetailUser.EXTRA_NOTE)
         if (favorites != null) {
             dataFavorite = activity?.intent?.getParcelableExtra<Favorite>(EXTRA_NOTE) as Favorite
@@ -58,7 +56,7 @@ class FollowersFragment : Fragment() {
         progressBarFollowers.visibility = View.VISIBLE
         val client = AsyncHttpClient()
         client.addHeader("User-Agent", "request")
-        client.addHeader("Authorization", "token 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")
+        client.addHeader("Authorization", "token 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")
         val url = "https://api.github.com/users/$id/followers"
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {
@@ -97,7 +95,7 @@ class FollowersFragment : Fragment() {
         progressBarFollowers.visibility = View.VISIBLE
         val client = AsyncHttpClient()
         client.addHeader("User-Agent", "request")
-        client.addHeader("Authorization", "token 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")
+        client.addHeader("Authorization", "token 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")
         val url = "https://api.github.com/users/$id"
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {

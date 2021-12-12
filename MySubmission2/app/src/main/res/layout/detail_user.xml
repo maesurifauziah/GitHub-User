@@ -101,7 +101,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:id="@+id/tv_onsFavorDetail"
+        android:id="@+id/fa_btn_favorite"
         app:borderWidth="0dp"
         app:fabSize="normal"
         android:backgroundTint="@color/lilac"
