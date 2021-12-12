@@ -2,19 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_favorite"
-        android:title="@string/favorite"
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_favorite"/>
-
-    <item
-        android:id="@+id/change_theme_settings"
-        app:showAsAction="ifRoom"
-        android:title="@string/change_theme_settings"
-        android:icon="@drawable/ic_settings"/>
-
-    <item
         android:id="@+id/action_change_settings"
-        app:showAsAction="never"
-        android:title="@string/change_language_settings"/>
+        android:title="@string/change_language_settings"
+        app:showAsAction="never"/>
 </menu>

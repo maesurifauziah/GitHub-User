@@ -12,8 +12,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.mysubmission2.adapter.AdapterUser
-import com.example.mysubmission2.data.DataUser
 import com.example.mysubmission2.databinding.ActivityMainBinding
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
@@ -37,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.title = "My Submission 3"
+        supportActionBar?.title = "My Submission 2"
 
         adapter = AdapterUser(listData)
 
@@ -68,7 +66,7 @@ class MainActivity : AppCompatActivity() {
         binding.progressBar.visibility = View.VISIBLE
         val client = AsyncHttpClient()
         client.addHeader("User-Agent", "request")
-        client.addHeader("Authorization", "token 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")
+        client.addHeader("Authorization", "token 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")
         val url = "https://api.github.com/users"
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {
@@ -107,7 +105,7 @@ class MainActivity : AppCompatActivity() {
         binding.progressBar.visibility = View.VISIBLE
         val client = AsyncHttpClient()
         client.addHeader("User-Agent", "request")
-        client.addHeader("Authorization", "token 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")
+        client.addHeader("Authorization", "token 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")
         val url = "https://api.github.com/search/users?q=$id"
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {
@@ -147,7 +145,7 @@ class MainActivity : AppCompatActivity() {
         binding.progressBar.visibility = View.VISIBLE
         val client = AsyncHttpClient()
         client.addHeader("User-Agent", "request")
-        client.addHeader("Authorization", "token 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")
+        client.addHeader("Authorization", "token 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")
         val url = "https://api.github.com/users/$id"
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {
@@ -252,14 +250,6 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.action_change_settings) {
             val mIntent = Intent(Settings.ACTION_LOCALE_SETTINGS)
-            startActivity(mIntent)
-        }
-        if (item.itemId == R.id.change_theme_settings) {
-            val mIntent = Intent(this, SettingsTheme::class.java)
-            startActivity(mIntent)
-        }
-        if (item.itemId == R.id.action_favorite) {
-            val mIntent = Intent(this, FavoriteUser::class.java)
             startActivity(mIntent)
         }
         return super.onOptionsItemSelected(item)
