@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Submission 3</string>
+    <string name="label_username">Username</string>
+    <string name="label_name">Name</string>
+    <string name="label_location">Location : %s </string>
+    <string name="label_repository">Repository : %s </string>
+    <string name="label_company">Company : %s </string>
+    <string name="label_followers">Followers : %s </string>
+    <string name="label_following">Following : %s </string>
+    <string name="label_followers2">Followers</string>
+    <string name="label_following2">Following</string>
+    <string name="label_avatar">Avatar</string>
+    <string name="label_change_language_settings">Change Language Settings</string>
+    <string name="label_add_favorite">Add Favorite</string>
+    <string name="label_find_username">Find Username</string>
+    <string name="label_change_theme_settings">Change Theme Setting</string>
+    <string name="label_favorite">Favorite</string>
+    <string name="label_dark_mode">Dark Mode</string>
+    <string name="label_deleted_favorite">Deleted Favorite</string>
+    <string name="label_empty_favorite">Empty Favorite</string>
+
+</resources>
