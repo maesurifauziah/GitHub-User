@@ -32,7 +32,7 @@ class FollowingUserFragment : Fragment() {
     private lateinit var adapter: FollowingUserAdapter
     private var favoriteUserGit: FavoriteUserGit? = null
     private lateinit var dataFavorite: FavoriteUserGit
-    private lateinit var dataUser: UserGit
+    private lateinit var dataUserGit: UserGit
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_following_user, container, false)
@@ -47,8 +47,8 @@ class FollowingUserFragment : Fragment() {
             dataFavorite = activity?.intent?.getParcelableExtra<FavoriteUserGit>(FollowersUserFragment.EXTRA_NOTE) as FavoriteUserGit
             getUserGitFollowing(dataFavorite.username.toString())
         } else {
-            dataUser = activity?.intent?.getParcelableExtra<UserGit>(FollowersUserFragment.EXTRA_DATA) as UserGit
-            getUserGitFollowing(dataUser.username.toString())
+            dataUserGit = activity?.intent?.getParcelableExtra<UserGit>(FollowersUserFragment.EXTRA_DATA) as UserGit
+            getUserGitFollowing(dataUserGit.username.toString())
         }
     }
 

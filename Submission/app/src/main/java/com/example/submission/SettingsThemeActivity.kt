@@ -30,7 +30,6 @@ class SettingsThemeActivity : AppCompatActivity() {
         val mainViewModel = ViewModelProvider(this, ViewModelFactory(pref)).get(
             MainViewModel::class.java
         )
-//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
 
         mainViewModel.getThemeSettings().observe(this,
             { isDarkModeActive: Boolean ->

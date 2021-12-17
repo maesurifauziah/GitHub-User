@@ -36,23 +36,23 @@ class UserGitDetailActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private lateinit var binding: ActivityUserGitDetailBinding
-    private lateinit var favHelper: FavoriteUserGitHelper
+    private lateinit var favoriteUserGitHelper: FavoriteUserGitHelper
     private lateinit var imageAvatar: String
     private var favorites: FavoriteUserGit? = null
-    private var isFavorite = false
+    private var liked = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityUserGitDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        favHelper = FavoriteUserGitHelper.getInstance(applicationContext)
-        favHelper.open()
+        favoriteUserGitHelper = FavoriteUserGitHelper.getInstance(applicationContext)
+        favoriteUserGitHelper.open()
 
         favorites = intent.getParcelableExtra(EXTRA_NOTE)
         if (favorites != null) {
             setDataDetailObject()
-            isFavorite = true
+            liked = true
             val checked: Int = R.drawable.ic_baseline_favorite_24_red
             btn_favorite.setImageResource(checked)
         } else {
@@ -130,11 +130,11 @@ class UserGitDetailActivity : AppCompatActivity(), View.OnClickListener {
         val checked: Int = R.drawable.ic_baseline_favorite_24_red
         val unChecked: Int = R.drawable.ic_baseline_favorite_border_24
         if (view.id == R.id.btn_favorite) {
-            if (isFavorite) {
-                favHelper.deleteById(favorites?.username.toString())
+            if (liked) {
+                favoriteUserGitHelper.deleteById(favorites?.username.toString())
                 Toast.makeText(this, getString(R.string.label_deleted_favorite), Toast.LENGTH_SHORT).show()
                 btn_favorite.setImageResource(unChecked)
-                isFavorite = false
+                liked = false
             } else {
                 val dataUsername = dtl_username.text.toString()
                 val dataName = dtl_name.text.toString()
@@ -157,7 +157,7 @@ class UserGitDetailActivity : AppCompatActivity(), View.OnClickListener {
                 values.put(FOLLOWING, dataFollowing)
                 values.put(FAVORITE, dataFavorite)
 
-                isFavorite = true
+                liked = true
                 contentResolver.insert(CONTENT_URI, values)
                 Toast.makeText(this, getString(R.string.label_add_favorite), Toast.LENGTH_SHORT).show()
                 btn_favorite.setImageResource(checked)
@@ -166,6 +166,6 @@ class UserGitDetailActivity : AppCompatActivity(), View.OnClickListener {
     }
     override fun onDestroy() {
         super.onDestroy()
-        favHelper.close()
+        favoriteUserGitHelper.close()
     }
 }

@@ -31,8 +31,8 @@ class FollowersUserFragment : Fragment() {
     private var listUserGit: ArrayList<UserGit> = ArrayList()
     private lateinit var adapter: FollowersUserAdapter
     private var favoriteUserGit: FavoriteUserGit? = null
-    private lateinit var dataFavorite: FavoriteUserGit
-    private lateinit var dataUser: UserGit
+    private lateinit var dataFavoriteUserGit: FavoriteUserGit
+    private lateinit var dataUserGit: UserGit
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_followers_user, container, false)
@@ -44,11 +44,11 @@ class FollowersUserFragment : Fragment() {
         listUserGit.clear()
         favoriteUserGit = activity?.intent?.getParcelableExtra(UserGitDetailActivity.EXTRA_NOTE)
         if (favoriteUserGit != null) {
-            dataFavorite = activity?.intent?.getParcelableExtra<FavoriteUserGit>(EXTRA_NOTE) as FavoriteUserGit
-            getUserGitFollowers(dataFavorite.username.toString())
+            dataFavoriteUserGit = activity?.intent?.getParcelableExtra<FavoriteUserGit>(EXTRA_NOTE) as FavoriteUserGit
+            getUserGitFollowers(dataFavoriteUserGit.username.toString())
         } else {
-            dataUser = activity?.intent?.getParcelableExtra<UserGit>(EXTRA_DATA) as UserGit
-            getUserGitFollowers(dataUser.username.toString())
+            dataUserGit = activity?.intent?.getParcelableExtra<UserGit>(EXTRA_DATA) as UserGit
+            getUserGitFollowers(dataUserGit.username.toString())
         }
     }
 
