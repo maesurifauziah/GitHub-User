@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Submission 3</string>
+    <string name="label_username">Nama Pengguna</string>
+    <string name="label_name">Nama</string>
+    <string name="label_location">Lokasi : %s </string>
+    <string name="label_repository">Repository : %s </string>
+    <string name="label_company">Perusahaan : %s </string>
+    <string name="label_followers">Pengikut : %s</string>
+    <string name="label_following">Mengikuti : %s</string>
+    <string name="label_followers2">Pengikut</string>
+    <string name="label_following2">Mengikuti</string>
+    <string name="label_avatar">Photo Profil</string>
+    <string name="label_change_language_settings">Pilih Pengaturan Bahasa</string>
+    <string name="label_add_favorite">Tambah Favorite</string>
+    <string name="label_find_username">Cari Nama Pengguna</string>
+    <string name="label_change_theme_settings">Pilih Pengaturan Tema</string>
+    <string name="label_favorite">Favorite</string>
+    <string name="label_dark_mode">Mode Malam</string>
+    <string name="label_deleted_favorite">Hapus Favorite</string>
+    <string name="label_empty_favorite">Favorite Kosong</string>
+
+</resources>

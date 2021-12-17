@@ -1,14 +1,13 @@
-package com.example.mysubmission3.db
+package com.example.submission.db
 
 import android.net.Uri
 import android.provider.BaseColumns
 
-object DatabaseContract {
-
-    const val AUTHORITY = "com.example.mysubmission3"
+object DatabaseContractFavorite {
+    const val AUTHORITY = "com.example.submission"
     const val SCHEME = "content"
 
-    class FavColumns : BaseColumns {
+    class FavoriteColumns : BaseColumns {
         companion object {
             const val TABLE_NAME = "favorite"
             const val USERNAME = "username"
@@ -17,7 +16,9 @@ object DatabaseContract {
             const val COMPANY = "company"
             const val LOCATION = "location"
             const val REPOSITORY = "repository"
-            const val FAVORITE = "isFav"
+            const val FOLLOWERS = "followers"
+            const val FOLLOWING = "following"
+            const val FAVORITE = "favorite"
 
             val CONTENT_URI: Uri = Uri.Builder().scheme(SCHEME)
                 .authority(AUTHORITY)

@@ -56,14 +56,6 @@ class FavoriteUser : AppCompatActivity() {
         }
     }
 
-    // change action bar title
-    private fun setActionBarTitle() {
-        if (supportActionBar != null) {
-            supportActionBar?.title = "Favorite Users"
-        }
-    }
-
-    // get data and set it to adapter from SQLite database
     private fun loadNotesAsync() {
         GlobalScope.launch(Dispatchers.Main) {
             progressBarFav.visibility = View.VISIBLE

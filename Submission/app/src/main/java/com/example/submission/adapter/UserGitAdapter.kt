@@ -1,4 +1,4 @@
-package com.example.mysubmission3.adapter
+package com.example.submission.adapter
 
 import android.content.Context
 import android.content.Intent
@@ -9,41 +9,43 @@ import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.mysubmission3.data.DataUser
-import com.example.mysubmission3.DetailUser
-import com.example.mysubmission3.databinding.ItemUserBinding
+import com.example.submission.UserGitDetailActivity
+import com.example.submission.data.UserGit
+import com.example.submission.databinding.ListUserBinding
 import java.util.*
 import kotlin.collections.ArrayList
 
-lateinit var _context: Context
+lateinit var v_context: Context
 
-class AdapterUser(private var listData: ArrayList<DataUser>) : RecyclerView.Adapter<AdapterUser.ListViewHolder>(),
+class UserGitAdapter(private var listUserGit: ArrayList<UserGit>) : RecyclerView.Adapter<UserGitAdapter.ListDataHolder>(),
     Filterable {
+
     private var onItemClickCallback: OnItemClickCallback? = null
 
-    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
-        this.onItemClickCallback = onItemClickCallback
+    override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ListDataHolder {
+        val binding = ListUserBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
+        v_context = viewGroup.context
+        return ListDataHolder(binding)
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ListViewHolder {
-        val binding = ItemUserBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
-        val sch = ListViewHolder(binding)
-        _context = viewGroup.context
-        return sch
+    override fun getItemCount(): Int {
+        return listUserGit.size
     }
 
-    override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val data = listData[position]
+    class ListDataHolder(var binding: ListUserBinding) : RecyclerView.ViewHolder(binding.root)
+
+    override fun onBindViewHolder(holder: ListDataHolder, i: Int) {
+        val data = listUserGit[i]
         Glide.with(holder.itemView.context)
             .load(data.avatar)
             .apply(RequestOptions().override(250, 250))
-            .into(holder.binding.imgAvatar)
-        holder.binding.txtUsername.text = data.username
-        holder.binding.txtName.text = data.name
-        holder.binding.txtCompany.text = data.company
-        holder.binding.txtLocation.text = data.location
+            .into(holder.binding.avatarImg)
+        holder.binding.textUsername.text = data.username
+        holder.binding.textName.text = data.name
+        holder.binding.textCompany.text = data.company
+        holder.binding.textLocation.text = data.location
         holder.itemView.setOnClickListener {
-            val dataUser = DataUser(
+            val dataUser = UserGit(
                 data.username,
                 data.name,
                 data.avatar,
@@ -53,34 +55,34 @@ class AdapterUser(private var listData: ArrayList<DataUser>) : RecyclerView.Adap
                 data.followers,
                 data.following
             )
-            val intentDetail = Intent(_context, DetailUser::class.java)
-            intentDetail.putExtra(DetailUser.EXTRA_DATA, dataUser)
-            _context.startActivity(intentDetail)
+            val intentDetail = Intent(v_context, UserGitDetailActivity::class.java)
+            intentDetail.putExtra(UserGitDetailActivity.EXTRA_DATA, dataUser)
+            v_context.startActivity(intentDetail)
         }
     }
 
-    interface OnItemClickCallback {
-        fun onItemClicked(dataUsers: DataUser)
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
     }
 
-    override fun getItemCount(): Int = listData.size
-
-    class ListViewHolder(var binding: ItemUserBinding) : RecyclerView.ViewHolder(binding.root)
+    interface OnItemClickCallback {
+        fun onItemClicked(dataUsers: UserGit)
+    }
 
     override fun getFilter(): Filter {
         return object : Filter() {
             override fun performFiltering(constraint: CharSequence): FilterResults {
                 val charSearch = constraint.toString()
-                listData = if (charSearch.isEmpty()) {
-                    listData
+                listUserGit = if (charSearch.isEmpty()) {
+                    listUserGit
                 } else {
-                    val resultList = ArrayList<DataUser>()
-                    for (row in listData) {
+                    val resultList = ArrayList<UserGit>()
+                    for (row in listUserGit) {
                         if ((row.username.toString().lowercase(Locale.ROOT)
                                 .contains(charSearch.lowercase(Locale.ROOT)))
                         ) {
                             resultList.add(
-                                DataUser(
+                                UserGit(
                                     row.username,
                                     row.name,
                                     row.avatar,
@@ -96,14 +98,16 @@ class AdapterUser(private var listData: ArrayList<DataUser>) : RecyclerView.Adap
                     resultList
                 }
                 val filterResults = FilterResults()
-                filterResults.values = listData
+                filterResults.values = listUserGit
                 return filterResults
             }
 
             override fun publishResults(constraint: CharSequence, results: FilterResults) {
-                listData = results.values as ArrayList<DataUser>
+                listUserGit = results.values as ArrayList<UserGit>
                 notifyDataSetChanged()
             }
         }
     }
+
+
 }

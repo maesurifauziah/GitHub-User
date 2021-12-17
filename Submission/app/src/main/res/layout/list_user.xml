@@ -10,36 +10,35 @@
     android:paddingBottom="14dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/img_avatar"
+        android:id="@+id/avatar_img"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
-        android:src="@color/teal_200"
+        android:src="@color/blue_200"
         app:civ_border_color="#3F51B5"
         app:civ_border_width="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/txt_username"
+        app:layout_constraintEnd_toStartOf="@+id/text_username"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txt_username"
+        android:id="@+id/text_username"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:text="@string/username"
+        android:text="@string/label_username"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/txt_name"
+        app:layout_constraintBottom_toTopOf="@+id/text_name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/img_avatar"
+        app:layout_constraintStart_toEndOf="@+id/avatar_img"
         app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
-        android:id="@+id/txt_name"
+        android:id="@+id/text_name"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -47,13 +46,13 @@
         android:layout_marginEnd="16dp"
         android:ellipsize="end"
         android:maxLines="3"
-        android:text="@string/name"
+        android:text="@string/label_name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/img_avatar"
-        app:layout_constraintTop_toBottomOf="@+id/txt_username" />
+        app:layout_constraintStart_toEndOf="@+id/avatar_img"
+        app:layout_constraintTop_toBottomOf="@+id/text_username" />
 
     <TextView
-        android:id="@+id/txt_company"
+        android:id="@+id/text_company"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -61,13 +60,12 @@
         android:layout_marginEnd="16dp"
         android:ellipsize="end"
         android:maxLines="3"
-        android:text="@string/company"
+        android:text="@string/label_company"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/img_avatar"
-        app:layout_constraintTop_toBottomOf="@+id/txt_name" />
-
+        app:layout_constraintStart_toEndOf="@+id/avatar_img"
+        app:layout_constraintTop_toBottomOf="@+id/text_name" />
     <TextView
-        android:id="@+id/txt_location"
+        android:id="@+id/text_location"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -75,9 +73,8 @@
         android:layout_marginEnd="16dp"
         android:ellipsize="end"
         android:maxLines="3"
-        android:text="@string/location"
+        android:text="@string/label_location"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/img_avatar"
-        app:layout_constraintTop_toBottomOf="@+id/txt_company" />
-
+        app:layout_constraintStart_toEndOf="@+id/avatar_img"
+        app:layout_constraintTop_toBottomOf="@+id/text_company" />
 </androidx.constraintlayout.widget.ConstraintLayout>

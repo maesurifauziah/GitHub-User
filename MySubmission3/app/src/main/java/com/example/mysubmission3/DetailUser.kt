@@ -29,7 +29,6 @@ class DetailUser : AppCompatActivity(), View.OnClickListener {
 
     companion object {
         const val EXTRA_DATA = "extra_data"
-        const val EXTRA_FAV = "extra_data"
         const val EXTRA_NOTE = "extra_note"
         const val EXTRA_POSITION = "extra_position"
     }
@@ -117,7 +116,7 @@ class DetailUser : AppCompatActivity(), View.OnClickListener {
                 val dataUsername = detail_username.text.toString()
                 val dataName = detail_name.text.toString()
                 val dataAvatar = imageAvatar
-                val datacompany = detail_company.text.toString()
+                val dataCompany = detail_company.text.toString()
                 val dataLocation = detail_location.text.toString()
                 val dataRepository = detail_repository.text.toString()
                 val dataFavorite = "1"
@@ -126,7 +125,7 @@ class DetailUser : AppCompatActivity(), View.OnClickListener {
                 values.put(USERNAME, dataUsername)
                 values.put(NAME, dataName)
                 values.put(AVATAR, dataAvatar)
-                values.put(COMPANY, datacompany)
+                values.put(COMPANY, dataCompany)
                 values.put(LOCATION, dataLocation)
                 values.put(REPOSITORY, dataRepository)
                 values.put(FAVORITE, dataFavorite)
