@@ -51,8 +51,8 @@ class MainActivity : AppCompatActivity() {
         statusLoading(true)
         val client = AsyncHttpClient()
         val token = BuildConfig.GITHUB_TOKEN
-        client.addHeader("User-Agent", "request")
         client.addHeader("Authorization", "token $token")
+        client.addHeader("User-Agent", "request")
         val url = "https://api.github.com/users"
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(
@@ -94,8 +94,8 @@ class MainActivity : AppCompatActivity() {
         statusLoading(true)
         val client = AsyncHttpClient()
         val token = BuildConfig.GITHUB_TOKEN
-        client.addHeader("User-Agent", "request")
         client.addHeader("Authorization", "token $token")
+        client.addHeader("User-Agent", "request")
         val url = "https://api.github.com/users/$id"
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {
@@ -205,8 +205,8 @@ class MainActivity : AppCompatActivity() {
         statusLoading(true)
         val client = AsyncHttpClient()
         val token = BuildConfig.GITHUB_TOKEN
-        client.addHeader("User-Agent", "request")
         client.addHeader("Authorization", "token $token")
+        client.addHeader("User-Agent", "request")
         val url = "https://api.github.com/search/users?q=$id"
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {

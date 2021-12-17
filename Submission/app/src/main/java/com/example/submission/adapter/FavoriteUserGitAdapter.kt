@@ -47,7 +47,6 @@ class FavoriteUserGitAdapter(private val activity: Activity) : RecyclerView.Adap
                 text_username.text = favorite.username
                 text_name.text = favorite.name
                 text_company.text = favorite.company.toString()
-                text_location.text = favorite.location.toString()
                 itemView.setOnClickListener(
                     CustomOnItemClickListener(
                         adapterPosition,

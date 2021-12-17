@@ -56,8 +56,8 @@ class FollowingUserFragment : Fragment() {
         statusLoading(true)
         val client = AsyncHttpClient()
         val token = BuildConfig.GITHUB_TOKEN
-        client.addHeader("User-Agent", "request")
         client.addHeader("Authorization", "token $token")
+        client.addHeader("User-Agent", "request")
         val url = "https://api.github.com/users/$id/followers"
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {
@@ -96,8 +96,8 @@ class FollowingUserFragment : Fragment() {
         statusLoading(true)
         val client = AsyncHttpClient()
         val token = BuildConfig.GITHUB_TOKEN
-        client.addHeader("User-Agent", "request")
         client.addHeader("Authorization", "token $token")
+        client.addHeader("User-Agent", "request")
         val url = "https://api.github.com/users/$id"
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {

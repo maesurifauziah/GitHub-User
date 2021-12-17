@@ -43,7 +43,6 @@ class UserGitAdapter(private var listUserGit: ArrayList<UserGit>) : RecyclerView
         holder.binding.textUsername.text = data.username
         holder.binding.textName.text = data.name
         holder.binding.textCompany.text = data.company
-        holder.binding.textLocation.text = data.location
         holder.itemView.setOnClickListener {
             val dataUser = UserGit(
                 data.username,

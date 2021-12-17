@@ -33,6 +33,5 @@ class FollowersUserAdapter (private var listUserGit: ArrayList<UserGit>) : Recyc
         holder.binding.textUsername.text = data.username
         holder.binding.textName.text = data.name
         holder.binding.textCompany.text = data.company
-        holder.binding.textLocation.text = data.location
     }
 }
