@@ -13,9 +13,17 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="100dp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleViewFollowing"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/list_user" />
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleViewFollowing"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/list_user" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </FrameLayout>
