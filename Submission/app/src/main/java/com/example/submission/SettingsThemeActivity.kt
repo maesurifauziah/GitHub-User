@@ -14,7 +14,7 @@ import com.example.submission.model.MainViewModel
 import com.example.submission.model.ViewModelFactory
 import com.example.submission.setting.SettingPreferences
 
-private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
+val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 class SettingsThemeActivity : AppCompatActivity() {
 

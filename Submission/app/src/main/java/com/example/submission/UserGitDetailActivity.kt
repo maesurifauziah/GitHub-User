@@ -33,6 +33,7 @@ class UserGitDetailActivity : AppCompatActivity(), View.OnClickListener {
         const val EXTRA_DATA = "extra_data"
         const val EXTRA_NOTE = "extra_note"
         const val EXTRA_POSITION = "extra_position"
+        const val EXTRA_FAVORITE = "extra_data"
     }
 
     private lateinit var binding: ActivityUserGitDetailBinding
@@ -141,9 +142,12 @@ class UserGitDetailActivity : AppCompatActivity(), View.OnClickListener {
                 val dataAvatar = imageAvatar
                 val dataCompany = dtl_company.text.toString()
                 val dataLocation = dtl_location.text.toString()
-                val dataRepository = dtl_repository.text.toString()
-                val dataFollowers = dtl_followers.text.toString()
-                val dataFollowing = dtl_following.text.toString()
+                val strdataRepository = dtl_repository.text.toString()
+                val dataRepository = strdataRepository.split(" ").toTypedArray()
+                val strdataFollowers = dtl_followers.text.toString()
+                val dataFollowers = strdataFollowers.split(" ").toTypedArray()
+                val strdataFollowing = dtl_following.text.toString()
+                val dataFollowing = strdataFollowing.split(" ").toTypedArray()
                 val dataFavorite = "1"
 
                 val values = ContentValues()
@@ -152,9 +156,9 @@ class UserGitDetailActivity : AppCompatActivity(), View.OnClickListener {
                 values.put(AVATAR, dataAvatar)
                 values.put(COMPANY, dataCompany)
                 values.put(LOCATION, dataLocation)
-                values.put(REPOSITORY, dataRepository)
-                values.put(FOLLOWERS, dataFollowers)
-                values.put(FOLLOWING, dataFollowing)
+                values.put(REPOSITORY, dataRepository[2])
+                values.put(FOLLOWERS, dataFollowers[2])
+                values.put(FOLLOWING, dataFollowing[2])
                 values.put(FAVORITE, dataFavorite)
 
                 liked = true

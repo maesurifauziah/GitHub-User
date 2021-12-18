@@ -55,6 +55,7 @@ class UserGitAdapter(private var listUserGit: ArrayList<UserGit>) : RecyclerView
                 data.following
             )
             val intentDetail = Intent(v_context, UserGitDetailActivity::class.java)
+            intentDetail.putExtra(UserGitDetailActivity.EXTRA_FAVORITE, dataUser)
             intentDetail.putExtra(UserGitDetailActivity.EXTRA_DATA, dataUser)
             v_context.startActivity(intentDetail)
         }

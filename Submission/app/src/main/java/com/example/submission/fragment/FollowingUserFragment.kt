@@ -58,7 +58,7 @@ class FollowingUserFragment : Fragment() {
         val token = BuildConfig.GITHUB_TOKEN
         client.addHeader("Authorization", "token $token")
         client.addHeader("User-Agent", "request")
-        val url = "https://api.github.com/users/$id/followers"
+        val url = "https://api.github.com/users/$id/following"
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {
                 statusLoading(false)

@@ -9,12 +9,18 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SearchView
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.submission.adapter.UserGitAdapter
 import com.example.submission.data.UserGit
 import com.example.submission.databinding.ActivityMainBinding
+import com.example.submission.databinding.ActivitySettingsThemeBinding
+import com.example.submission.model.MainViewModel
+import com.example.submission.model.ViewModelFactory
+import com.example.submission.setting.SettingPreferences
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
@@ -27,6 +33,7 @@ class MainActivity : AppCompatActivity() {
     private var listUserGit: ArrayList<UserGit> = ArrayList()
     private lateinit var adapter: UserGitAdapter
     private lateinit var binding: ActivityMainBinding
+    private lateinit var bindingSetting: ActivitySettingsThemeBinding
 
     companion object {
         private val TAG = MainActivity::class.java.simpleName
@@ -45,6 +52,7 @@ class MainActivity : AppCompatActivity() {
         getUserGit()
         searchUserGit()
         recyclerViewConfig()
+        getThemeSettings()
     }
 
     private fun getUserGit() {
@@ -283,4 +291,25 @@ class MainActivity : AppCompatActivity() {
             binding.progressBar.visibility = View.INVISIBLE
         }
     }
+
+    private fun getThemeSettings() {
+        bindingSetting = ActivitySettingsThemeBinding.inflate(layoutInflater)
+
+        val pref = SettingPreferences.getInstance(dataStore)
+        val mainViewModel = ViewModelProvider(this, ViewModelFactory(pref)).get(
+            MainViewModel::class.java
+        )
+
+        mainViewModel.getThemeSettings().observe(this,
+            { isDarkModeActive: Boolean ->
+                if (isDarkModeActive) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    bindingSetting.switchThemeSetting.isChecked = true
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                    bindingSetting.switchThemeSetting.isChecked = false
+                }
+            })
+    }
+
 }
